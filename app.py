@@ -5,13 +5,13 @@ from flask_login import (LoginManager, UserMixin, login_user, login_required,
         logout_user, current_user)
 from werkzeug.security import generate_password_hash, check_password_hash
 
-application = Flask(__name__)
-application.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
-application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-bootstrap = Bootstrap(application)
-db = SQLAlchemy(application)
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+bootstrap = Bootstrap(app)
+db = SQLAlchemy(app)
 login_manager = LoginManager()
-login_manager.init_app(application)
+login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 class User(UserMixin, db.Model):
@@ -24,27 +24,27 @@ class User(UserMixin, db.Model):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-@application.route('/')
+@app.route('/')
 def index():
     return render_template('index.html')
 
-@application.route('/evidence')
+@app.route('/evidence')
 def evidence():
     return render_template('ClimateChangeEvidence.html')
 
-@application.route('/solutions')
+@app.route('/solutions')
 def solutions():
     return render_template('ClimateChangeSolutions.html')
 
-@application.route('/climatesandcrises')
+@app.route('/climatesandcrises')
 def climatesandcrises():
     return render_template('ComparingClimatesAndCrises.html')
 
-@application.route('/climatefinance')
+@app.route('/climatefinance')
 def climatefinance():
     return render_template('WhatIsClimateFinance.html')
 
-@application.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     response = None
     form = LoginForm()
@@ -57,7 +57,7 @@ def login():
         response = 'Invalid username or password'
     return render_template('login.html', form=form, response=response)
 
-@application.route('/signup', methods=['GET', 'POST'])
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
     response = None
     form = RegisterForm()
@@ -77,4 +77,4 @@ def signup():
     return render_template('signup.html', form=form, response=response)
 
 if __name__ == '__main__':
-    application.run(threaded=True, port=5000)
+    app.run(threaded=True, port=5000)
