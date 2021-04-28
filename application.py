@@ -77,4 +77,4 @@ def signup():
     return render_template('signup.html', form=form, response=response)
 
 if __name__ == '__main__':
-    application.run(debug=True)
+    application.run(threaded=True, port=5000)
