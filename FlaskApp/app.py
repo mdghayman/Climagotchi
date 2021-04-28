@@ -32,6 +32,18 @@ def index():
 def evidence():
     return render_template('ClimateChangeEvidence.html')
 
+@app.route('/solutions')
+def solutions():
+    return render_template('ClimateChangeSolutions.html')
+
+@app.route('/climatesandcrises')
+def climatesandcrises():
+    return render_template('ComparingClimatesAndCrises.html')
+
+@app.route('/climatefinance')
+def climatefinance():
+    return render_template('WhatIsClimateFinance.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     response = None
