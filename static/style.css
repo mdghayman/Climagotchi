@@ -1,36 +1,9 @@
 body {
-    background-color: green;
+    background-color: #adebeb;
     padding-top: 100px;
     padding-right: 100px;
     padding-bottom: 100px;
     padding-left: 100px;
-}
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
-}
-
-h1 {
-  font-family: Arial;
-  color: white;
-}
-
-h2 {
-  font-family: Arial;
-  color: white;
-}
-
-h3 {
-  font-family: Arial;
-  color: white;
-}
-
-h4 {
-  font-family: Arial;
-  color: white;
-}
-
-p {
-  font-family: Arial;
-  color: white;
+    font-family: Helvetica;
+    color: #006600;
 }
