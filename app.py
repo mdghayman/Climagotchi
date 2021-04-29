@@ -5,7 +5,6 @@ from flask_login import (LoginManager, UserMixin, login_user, login_required,
         logout_user, current_user)
 from werkzeug.security import generate_password_hash, check_password_hash
 
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -27,7 +26,13 @@ def load_user(user_id):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    if request.form.get("Climate Change Evidence") == "Climate Change Evidence":
+        return redirect('/evidence')
     return render_template('index.html')
+
+@app.route('/hover')
+def hover():
+    return render_template('hover.html')
 
 @app.route('/evidence')
 def evidence():

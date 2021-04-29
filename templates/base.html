@@ -1,7 +1,9 @@
 <html>
 <head>
     <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='v3.css')}}">
 </head>
 <body>
     {% block content %}

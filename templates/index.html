@@ -5,9 +5,20 @@
 {% endblock %}
 
 {% block content %}
+
     <h1>Welcome to Climagotchi!</h1>
-    <a href="{{ url_for('evidence') }}">Climate Change Evidence</a><br>
-    <a href="{{ url_for('solutions') }}">Climate Change Solutions</a><br>
-    <a href="{{ url_for('climatesandcrises') }}">Comparing Climates and Crises</a><br>
-    <a href="{{ url_for('climatefinance') }}">What is Climate Finance?</a><br>
+
+    <img src="{{url_for('static', filename='earth.png')}}" width=300>
+
+    <form method="post" action="/">
+        <p></p>
+        <a href="evidence"><button type="button" class="nes-btn is-success">Climate Change Evidence</button></a><br>
+        <p></p>
+        <a href="solutions"><button type="button" class="nes-btn is-success">Climate Change Solutions</button></a><br>
+        <p></p>
+        <a href="climatesandcrises"><button type="button" class="nes-btn is-success">Comparing Climates and Crises</button></a><br>
+        <p></p>
+        <a href="climatefinance"><button type="button" class="nes-btn is-success">What is Climate Finance?</button></a>
+    </form>
+
 {% endblock %}
