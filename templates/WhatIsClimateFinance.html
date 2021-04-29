@@ -1,3 +1,9 @@
+<!doctype html>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+{% block content %}
+
 <h1>
   What is climate finance?
 </h1>
@@ -73,3 +79,5 @@
 <p>
   Impact investments are investments made with the intention to generate positive, measurable social and environmental impact alongside a financial return. Impact investing is now a substantial portion of the global investment market - with <a rel="noreferrer noopener" href="https://thegiin.org/research/publication/impinv-market-size" target="_blank">over 1,340 organisations managing USD 502 billion</a> in impact investing assets worldwide.
 </p>
+
+{% endblock %}

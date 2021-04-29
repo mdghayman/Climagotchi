@@ -1,3 +1,9 @@
+<!doctype html>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+{% block content %}
+
 <h1>
   Climate change evidence
 </h1>
@@ -38,3 +44,5 @@
   <li>Over 100 wildfires in the Artic Circle released about 100 megatons of carbon dioxide (CO2), in one of the worst wildfire seasons on record. Russia's army battled to control fires affecting an area larger than Belgium. Alaska saw raging wildfires and a coast devoid of sea ice, with the hottest July in history, during which temperatures never dropped below freezing.Spain battled the greatest wildfires they had seen in 20 years. Australia had its hottest summer, leading into prolonged fires across the country.</li>
   <li>Greenland faced its second largest ice melt since 1950, with its ice sheet shrinking more during the month of July than in an average year, already reaching rates equivalent the the most pessimistic models scientists had predicted for 2070.</li>
 </ul>
+
+{% endblock %}

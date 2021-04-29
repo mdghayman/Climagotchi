@@ -1,3 +1,9 @@
+<!doctype html>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+{% block content %}
+
 <h1>
   Comparing climates and crises
 </h1>
@@ -164,3 +170,5 @@
 <p><em>
   Part 5: Like climate change, political decisions taken to address coronavirus depend on value systems, and thus require careful examination of difficult tradeoffs.
 </em></p>
+
+{% endblock %}

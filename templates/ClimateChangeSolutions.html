@@ -1,3 +1,9 @@
+<!doctype html>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+{% block content %}
+
 <h1>
   Climate change solutions
 </h1>
@@ -37,3 +43,5 @@
 <p>
   The climate protests, which have spread across developed countries and have some presence in developing countries, may be largely responsible for increased climate ambition in some countries. The raise encouraging prospects for democratic approaches to climate change - something formalised by initiatives like Ireland's citizens' assembly on climate change, the United Kingdom's citizens' assembly on climate change, and the French citizens' convention on the ecological transition.
 </p>
+
+{% endblock %}
