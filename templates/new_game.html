@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    New Game
+{% endblock %}
+
+{% block content %}
+
+    <h1>New Game</h1>
+
+    <img src="{{url_for('static', filename='earth.png')}}" width=300><br>
+
+    <p>Planet Earth Health</p>
+    <i class="nes-icon is-large heart"></i>
+    <i class="nes-icon is-large heart"></i>
+    <i class="nes-icon is-large heart"></i>
+    <i class="nes-icon is-large is-half heart"></i>
+    <i class="nes-icon is-large is-transparent heart"></i><br><br>
+
+    <p>Global Equality</p>
+    <i class="nes-icon coin is-large"></i>
+    <i class="nes-icon coin is-large"></i>
+    <i class="nes-icon coin is-large"></i>
+    <i class="nes-icon coin is-large"></i>
+    <i class="nes-icon close is-large"></i><br><br>
+
+    <p>Human Happiness</p>
+    <i class="nes-icon is-large like"></i>
+    <i class="nes-icon is-large like"></i>
+    <i class="nes-icon is-large like"></i>
+    <i class="nes-icon is-large like"></i>
+    <i class="nes-icon is-large like is-empty"></i><br><br>
+
+    <p>Quality of Life</p>
+    <i class="nes-icon is-large star"></i>
+    <i class="nes-icon is-large star"></i>
+    <i class="nes-icon is-large star"></i>
+    <i class="nes-icon is-large star is-half"></i>
+    <i class="nes-icon is-large star is-transparent"></i><br><br>
+
+    <p>New Technology</p>
+    <i class="nes-icon trophy is-large"></i>
+    <i class="nes-icon trophy is-large"></i>
+    <i class="nes-icon trophy is-large"></i>
+    <i class="nes-icon trophy is-large"></i>
+    <i class="nes-icon close is-large"></i><br><br>
+
+    <p>Global CO2 Levels</p>
+    <progress class="nes-progress" value="90" max="100" style="max-width: 400px;"></progress><br><br>
+
+    <p>Global Temperature</p>
+    <progress class="nes-progress is-error" value="10" max="100" style="max-width: 400px;"></progress><br><br>
+
+    <p>Sea Level</p>
+    <progress class="nes-progress is-primary" value="80" max="100" style="max-width: 400px;"></progress><br><br>
+
+    <p>Forest Health</p>
+    <progress class="nes-progress is-success" value="50" max="100" style="max-width: 400px;"></progress><br><br>
+
+    <p>Biodiversity</p>
+    <progress class="nes-progress is-warning" value="30" max="100" style="max-width: 400px;"></progress><br><br>
+
+    <p>Political Consensus</p>
+    <progress class="nes-progress is-pattern" value="50" max="100" style="max-width: 400px;"></progress><br><br>
+
+{% endblock %}

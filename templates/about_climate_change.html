@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    About Climate Change
+{% endblock %}
+
+{% block content %}
+
+    <h1>About climate cange</h1>
+
+    <img src="{{url_for('static', filename='earth.png')}}" width=300>
+
+    <form method="post" action="/">
+        <p></p>
+        <a href="evidence"><button type="button" class="nes-btn is-success">Climate Change Evidence</button></a><br>
+        <p></p>
+        <a href="solutions"><button type="button" class="nes-btn is-success">Climate Change Solutions</button></a><br>
+        <p></p>
+        <a href="climatesandcrises"><button type="button" class="nes-btn is-success">Comparing Climates and Crises</button></a><br>
+        <p></p>
+        <a href="climatefinance"><button type="button" class="nes-btn is-success">What is Climate Finance?</button></a>
+    </form>
+
+{% endblock %}

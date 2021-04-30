@@ -1,0 +1,16 @@
+body {
+    margin: 20px;
+    text-align: center;
+    font-size: 1.75rem;
+}
+
+@media screen and (min-width : 1200px)
+{
+  body
+  {
+    margin: 100px;
+    text-align: center;
+    font-size: 1.25rem;
+  }
+}
+

@@ -26,9 +26,23 @@ def load_user(user_id):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    if request.form.get("Climate Change Evidence") == "Climate Change Evidence":
-        return redirect('/evidence')
     return render_template('index.html')
+
+@app.route('/new_game')
+def new_game():
+    return render_template('new_game.html')
+
+@app.route('/how_to_play')
+def how_to_play():
+    return render_template('how_to_play.html')
+
+@app.route('/about_climate_change')
+def about_climate_change():
+    return render_template('about_climate_change.html')
+
+@app.route('/about_climagotchi')
+def about_climagotchi():
+    return render_template('about_climagotchi.html')
 
 @app.route('/hover')
 def hover():
