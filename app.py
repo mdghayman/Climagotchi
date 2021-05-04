@@ -36,33 +36,29 @@ def new_game():
 def how_to_play():
     return render_template('how_to_play.html')
 
-@app.route('/about_climate_change')
-def about_climate_change():
-    return render_template('about_climate_change.html')
-
 @app.route('/about_climagotchi')
 def about_climagotchi():
     return render_template('about_climagotchi.html')
 
-@app.route('/hover')
-def hover():
-    return render_template('hover.html')
+@app.route('/about_climate_change')
+def about_climate_change():
+    return render_template('about_climate_change.html')
 
-@app.route('/evidence')
-def evidence():
-    return render_template('ClimateChangeEvidence.html')
+@app.route('/climate_change_evidence')
+def climate_change_evidence():
+    return render_template('climate_change_evidence.html')
 
-@app.route('/solutions')
-def solutions():
-    return render_template('ClimateChangeSolutions.html')
+@app.route('/climate_change_solutions')
+def climate_change_solutions():
+    return render_template('climate_change_solutions.html')
 
-@app.route('/climatesandcrises')
-def climatesandcrises():
-    return render_template('ComparingClimatesAndCrises.html')
+@app.route('/climate_finance')
+def climate_finance():
+    return render_template('climate_finance.html')
 
-@app.route('/climatefinance')
-def climatefinance():
-    return render_template('WhatIsClimateFinance.html')
+@app.route('/climate_finance_and_covid')
+def climate_finance_and_covid():
+    return render_template('climate_finance_and_covid.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
