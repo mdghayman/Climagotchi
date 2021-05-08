@@ -14,5 +14,5 @@ class Government:
         self.happiness = happiness
         self.tech = tech
 
-atmosphere = Atmosphere(year=1850, co2=300, temp=20, sea_level=0)
+atmosphere = Atmosphere(year=1998, co2=300, temp=20, sea_level=0)
 government = Government(gdp=500, health=0.7, happiness=0.7, tech=0.7)

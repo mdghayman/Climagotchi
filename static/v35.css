@@ -1,7 +1,8 @@
 body {
     margin: 20px;
     text-align: center;
-    font-size: 1.75rem;
+    font-size: 1rem;
+    background-color: black;
 }
 
 @media screen and (min-width : 1200px)
@@ -10,13 +11,14 @@ body {
   {
     margin: 20px;
     text-align: center;
-    font-size: 1.25rem;
+    font-size: 1rem;
+    background-color: black;
   }
   .row {
   display: flex;
   }
   .column {
-    flex: 50%;
+    flex: 33.333%;
     padding: 10px;
   }
 }

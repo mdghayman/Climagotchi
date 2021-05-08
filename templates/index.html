@@ -6,6 +6,8 @@
 
 {% block content %}
 
+    <div class="nes-container" style="background-color: white; margin: 10px">
+
     <h1>Welcome to Climagotchi!</h1>
 
     <img src="{{url_for('static', filename='earth.png')}}" width=300>
@@ -18,5 +20,7 @@
     <a href="about_climagotchi"><button type="button" class="nes-btn is-success">About Climagotchi</button></a>
     <p></p>
     <a href="about_climate_change"><button type="button" class="nes-btn is-success">About Climate Change</button></a>
+
+    </div>
 
 {% endblock %}

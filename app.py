@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, session, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
-from model import atmosphere, government
+from level_1 import atmosphere, usa, brazil, namibia
 
 
 app = Flask(__name__)
@@ -40,7 +40,11 @@ def level_1():
                 year=atmosphere.year,
                 co2='{:.1f}'.format(atmosphere.co2),
                 temp='{:.1f}'.format(atmosphere.temp),
-                sea_level='{:.1f}'.format(atmosphere.sea_level))
+                sea_level='{:.1f}'.format(atmosphere.sea_level),
+                budget=usa.gdp,
+                welfare=usa.happiness,
+                approval=usa.approval,
+                tech=usa.tech)
 
         if request.form['emissions'] == 'increase':
             atmosphere.year += 1
@@ -51,14 +55,42 @@ def level_1():
                 year=atmosphere.year,
                 co2='{:.1f}'.format(atmosphere.co2),
                 temp='{:.1f}'.format(atmosphere.temp),
-                sea_level='{:.1f}'.format(atmosphere.sea_level))
+                sea_level='{:.1f}'.format(atmosphere.sea_level),
+                budget=usa.gdp,
+                welfare=usa.happiness,
+                approval=usa.approval,
+                tech=usa.tech)
 
     elif request.method == 'GET':
         return render_template('level_1.html',
             year=atmosphere.year,
             co2='{:.1f}'.format(atmosphere.co2),
             temp='{:.1f}'.format(atmosphere.temp),
-            sea_level='{:.1f}'.format(atmosphere.sea_level))
+            sea_level='{:.1f}'.format(atmosphere.sea_level),
+            budget=usa.gdp,
+            welfare=usa.happiness,
+            approval=usa.approval,
+            tech=usa.tech)
+
+
+@app.route('/level_2', methods=['GET', 'POST'])
+def level_2():
+    return render_template('2.html')
+
+
+@app.route('/level_3', methods=['GET', 'POST'])
+def level_3():
+    return render_template('level_3.html')
+
+
+@app.route('/level_4', methods=['GET', 'POST'])
+def level_4():
+    return render_template('level_4.html')
+
+
+@app.route('/level_5', methods=['GET', 'POST'])
+def level_5():
+    return render_template('level_5.html')
 
 
 @app.route('/how_to_play')

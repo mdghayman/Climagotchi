@@ -6,75 +6,326 @@
 
 {% block content %}
 
-    <h1>Level 1</h1><br>
+    <div class="nes-container" style="background-color: white; margin: 10px">
+        <h1>Level 1 ~ Year: {{ year }}</h1>
+    </div>
 
     <div class="row">
       <div class="column">
+        <div class="nes-container" style="min-height: 550; background: white;">
 
+        <p>Choose where to invest this year:</p>
+
+<!--
     <form method="post" action="/level_1">
-        <button class="nes-btn is-success" name="emissions" value="decrease">Decrease</button>
-        <button class="nes-btn is-success" name="emissions" value="increase">Increase</button><br>
-    </form><br>
+        <button class="nes-btn is-success" name="emissions" value="manufacturing">Manufacturing</button><br>
+        <button class="nes-btn is-success" name="emissions" value="agriculture">Agriculture</button><br>
+        <button class="nes-btn is-success" name="emissions" value="healthcare">Healthcare</button><br>
+        <button class="nes-btn is-success" name="emissions" value="conservation">Conservation</button><br>
+        <button class="nes-btn is-success" name="emissions" value="renewable_energy">Renewable Energy</button><br>
+        <button class="nes-btn is-success" name="emissions" value="research">Research</button><br>
+    </form><br> -->
 
-    <p>Year: {{ year }}</p><br>
+    <section>
+      <button type="button" class="nes-btn is-success" onclick="document.getElementById('investment').showModal();">
+        Investment
+      </button>
+      <dialog class="nes-dialog is-rounded" style="max-width: 600px;" id="investment">
+        <form method="dialog">
+          <p class="title">Investment</p>
+          <p>Investment.</p>
+          <menu class="dialog-menu">
+            <button class="nes-btn">Manufacturing</button><br>
+            <p></p>
+            <button class="nes-btn">Agriculture</button><br>
+            <p></p>
+            <button class="nes-btn">Healthcare</button><br>
+            <p></p>
+            <button class="nes-btn">Research</button><br>
+            <p></p>
+            <button class="nes-btn is-error">Cancel</button><br>
+          </menu>
+        </form>
+      </dialog>
+    </section>
 
-    <p>CO2: {{ co2 }} ppm</p>
-    <progress class="nes-progress" value={{ co2 }} max="500" style="max-width: 400px;"></progress><br><br>
+    <p></p>
 
-    <p>Temperature: {{ temp }} C</p>
-    <progress class="nes-progress is-error" value={{ temp }} max="50" style="max-width: 400px;"></progress><br><br>
+    <section>
+      <button type="button" class="nes-btn is-success" onclick="document.getElementById('mitigation').showModal();">
+        Mitigation
+      </button>
+      <dialog class="nes-dialog is-rounded" style="max-width: 600px;" id="mitigation">
+        <form method="dialog">
+          <p class="title">Mitigation</p>
+          <p>Mitigation.</p>
+          <menu class="dialog-menu">
+            <button class="nes-btn">Renewable Energy</button><br>
+            <p></p>
+            <button class="nes-btn">Reforestation</button><br>
+            <p></p>
+            <button class="nes-btn">Research</button><br>
+            <p></p>
+            <button class="nes-btn is-error">Cancel</button>
+          </menu>
+        </form>
+      </dialog>
+    </section>
 
-    <p>Sea Level {{ sea_level }}</p>
-    <progress class="nes-progress is-primary" value={{ sea_level }} max="200" style="max-width: 400px;"></progress><br><br>
+    <p></p>
 
-    </div>
+    <section>
+      <button type="button" class="nes-btn is-success" onclick="document.getElementById('adaptation').showModal();">
+        Adaptation
+      </button>
+      <dialog class="nes-dialog is-rounded" style="max-width: 600px;" id="adaptation">
+        <form method="dialog">
+          <p class="title">Adaptation</p>
+          <p>Adaptation.</p>
+          <menu class="dialog-menu">
+            <button class="nes-btn">Resilient Infrastructure</button><br>
+            <p></p>
+            <button class="nes-btn">Climate Smart Agriculture</button><br>
+            <p></p>
+            <button class="nes-btn">Research</button><br>
+            <p></p>
+            <button class="nes-btn is-error">Cancel</button>
+          </menu>
+        </form>
+      </dialog>
+    </section>
+
+    <p></p>
+
+    <section>
+      <button type="button" class="nes-btn is-success" onclick="document.getElementById('policy').showModal();">
+        Policy
+      </button>
+      <dialog class="nes-dialog is-rounded" style="max-width: 600px;" id="policy">
+        <form method="dialog">
+          <p class="title">Policy</p>
+          <p>Policy.</p>
+          <menu class="dialog-menu">
+            <button class="nes-btn is-error">Cancel</button>
+          </menu>
+        </form>
+      </dialog>
+    </section>
+
+    <p></p>
+
+    <section>
+      <button type="button" class="nes-btn is-success" onclick="document.getElementById('diplomacy').showModal();">
+        Diplomacy
+      </button>
+      <dialog class="nes-dialog is-rounded" style="max-width: 600px;" id="diplomacy">
+        <form method="dialog">
+          <p class="title">Diplomacy</p>
+          <p>Diplomacy.</p>
+          <menu class="dialog-menu">
+            <button class="nes-btn is-error">Cancel</button>
+          </menu>
+        </form>
+      </dialog>
+    </section>
+
+    <p></p>
+
+    <section>
+      <button type="button" class="nes-btn is-success" onclick="document.getElementById('propoganda').showModal();">
+        Propoganda
+      </button>
+      <dialog class="nes-dialog is-rounded" style="max-width: 600px;" id="propoganda">
+        <form method="dialog">
+          <p class="title">Propoganda</p>
+          <p>Propoganda.</p>
+          <menu class="dialog-menu">
+            <button class="nes-btn is-error">Cancel</button>
+          </menu>
+        </form>
+      </dialog>
+    </section>
+
+        </div>
+      </div>
+
+      <p></p>
+
       <div class="column">
+        <div class="nes-container" style="min-height: 550; background: white;">
 
-    <p>Global Equality</p>
-    <i class="nes-icon coin is-large"></i>
-    <i class="nes-icon coin is-large"></i>
-    <i class="nes-icon coin is-large"></i>
-    <i class="nes-icon coin is-large"></i>
+    <button type="button" class="nes-btn" onclick="document.getElementById('budget').showModal();">
+      Budget: {{ budget }}<br>
+      <i class="nes-icon coin is-medium"></i>
+      <i class="nes-icon coin is-medium"></i>
+      <i class="nes-icon coin is-medium"></i>
+      <i class="nes-icon close is-medium"></i>
+    </button>
+    <dialog class="nes-dialog is-rounded" style="max-width: 600px;" id="budget">
+      <form method="dialog">
+        <p class="title">Budget</p>
+        <p>This is the national budget available for your government this year.
+        It's your responsibility to spend it wisely, taking social and
+        environmental needs into account. Your spending decisions will also
+        affect the the budget available to your in the future, as spending on
+        some areas presents a better financial investment than others.</p>
+        <menu class="dialog-menu">
+          <button class="nes-btn is-error">Cancel</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <p></p>
+
+    <button type="button" class="nes-btn" onclick="document.getElementById('tech').showModal();">
+      Technology: {{ tech }}<br>
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star is-half"></i>
+      <i class="nes-icon is-medium star is-transparent"></i>
+    </button>
+    <dialog class="nes-dialog is-rounded" style="max-width: 600px;" id="tech">
+      <form method="dialog">
+        <p class="title">Technology</p>
+        <p>This is a measure of how advanced technology is in your country.</p>
+        <menu class="dialog-menu">
+          <button class="nes-btn is-error">Cancel</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <p></p>
+
+    <button type="button" class="nes-btn" onclick="document.getElementById('welfare').showModal();">
+      Health: {{ welfare }}<br>
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium is-half heart"></i>
+      <i class="nes-icon is-medium is-transparent heart"></i>
+    </button>
+    <dialog class="nes-dialog is-rounded" style="max-width: 600px;" id="welfare">
+      <form method="dialog">
+        <p class="title">Welfare</p>
+        <p>A measure of the public welfare benefitting your citizens. This also
+        acts as a proxy for equality.</p>
+        <menu class="dialog-menu">
+          <button class="nes-btn is-error">Cancel</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <p></p>
+
+    <button type="button" class="nes-btn" onclick="document.getElementById('approval').showModal();">
+      Approval: {{ approval }}<br>
+      <i class="nes-icon is-medium like"></i>
+      <i class="nes-icon is-medium like"></i>
+      <i class="nes-icon is-medium like"></i>
+      <i class="nes-icon is-medium like is-empty"></i>
+    </button>
+    <dialog class="nes-dialog is-rounded" style="max-width: 600px;" id="approval">
+      <form method="dialog">
+        <p class="title">Approval</p>
+        <p>This is a measure of the public approval for your government.</p>
+        <menu class="dialog-menu">
+          <button class="nes-btn is-error">Cancel</button>
+        </menu>
+      </form>
+    </dialog>
+
+<!--      <p>New Technology</p>
+    <i class="nes-icon trophy is-large"></i>
+    <i class="nes-icon trophy is-large"></i>
+    <i class="nes-icon trophy is-large"></i>
+    <i class="nes-icon trophy is-large"></i>
     <i class="nes-icon close is-large"></i><br><br>
-
-    <p>Human Health</p>
-    <i class="nes-icon is-large heart"></i>
-    <i class="nes-icon is-large heart"></i>
-    <i class="nes-icon is-large heart"></i>
-    <i class="nes-icon is-large is-half heart"></i>
-    <i class="nes-icon is-large is-transparent heart"></i><br><br>
-
-    <p>Human Happiness</p>
-    <i class="nes-icon is-large like"></i>
-    <i class="nes-icon is-large like"></i>
-    <i class="nes-icon is-large like"></i>
-    <i class="nes-icon is-large like"></i>
-    <i class="nes-icon is-large like is-empty"></i><br><br>
-
-    <p>Science and Technology</p>
-    <i class="nes-icon is-large star"></i>
-    <i class="nes-icon is-large star"></i>
-    <i class="nes-icon is-large star"></i>
-    <i class="nes-icon is-large star is-half"></i>
-    <i class="nes-icon is-large star is-transparent"></i><br><br>
-
-<!--     <p>New Technology</p>
-    <i class="nes-icon trophy is-large"></i>
-    <i class="nes-icon trophy is-large"></i>
-    <i class="nes-icon trophy is-large"></i>
-    <i class="nes-icon trophy is-large"></i>
-    <i class="nes-icon close is-large"></i><br><br> -->
-
-<!--     <p>Forest Health</p>
-    <progress class="nes-progress is-success" value="50" max="100" style="max-width: 400px;"></progress><br><br>
-
-    <p>Biodiversity</p>
-    <progress class="nes-progress is-warning" value="30" max="100" style="max-width: 400px;"></progress><br><br>
 
     <p>Political Consensus</p>
     <progress class="nes-progress is-pattern" value="50" max="100" style="max-width: 400px;"></progress><br><br> -->
 
+        </div>
       </div>
+
+      <p></p>
+
+      <div class="column">
+        <div class="nes-container" style="min-height: 550; background: white;">
+
+    <button type="button" class="nes-btn" onclick="document.getElementById('co2').showModal();">
+    CO2: {{ co2 }} ppm
+    </button>
+    <dialog class="nes-dialog is-rounded" style="max-width: 600px;" id="co2">
+      <form method="dialog">
+        <p class="title">CO2 ppm:</p>
+        <p>This is the average global level of CO2 in the atmosphere, measured
+        in parts per million (ppm).</p>
+        <menu class="dialog-menu">
+          <button class="nes-btn is-error">Cancel</button>
+        </menu>
+      </form>
+    </dialog>
+    <progress class="nes-progress" value={{ co2 }} max="500" style="max-width: 400px;"></progress>
+
+    <p></p>
+
+    <button type="button" class="nes-btn" onclick="document.getElementById('temp').showModal();">
+    Temp: {{ temp }} C
+    </button>
+    <dialog class="nes-dialog is-rounded" style="max-width: 600px;" id="temp">
+      <form method="dialog">
+        <p class="title">CO2 ppm:</p>
+        <p>This is the average global level of CO2 in the atmosphere, measured
+        in parts per million (ppm).</p>
+        <menu class="dialog-menu">
+          <button class="nes-btn is-error">Cancel</button>
+        </menu>
+      </form>
+    </dialog>
+    <progress class="nes-progress is-error" value={{ temp }} max="50" style="max-width: 400px;"></progress>
+
+    <p></p>
+
+    <button type="button" class="nes-btn" onclick="document.getElementById('sea_level').showModal();">
+    Sea Level: {{ sea_level }}
+    </button>
+    <dialog class="nes-dialog is-rounded" style="max-width: 600px;" id="sea_level">
+      <form method="dialog">
+        <p class="title">CO2 ppm:</p>
+        <p>This is the average global level of CO2 in the atmosphere, measured
+        in parts per million (ppm).</p>
+        <menu class="dialog-menu">
+          <button class="nes-btn is-error">Cancel</button>
+        </menu>
+      </form>
+    </dialog>
+    <progress class="nes-progress is-primary" value={{ sea_level }} max="200" style="max-width: 400px;"></progress>
+
+    <p></p>
+
+    <button type="button" class="nes-btn" onclick="document.getElementById('forests').showModal();">
+    Forests
+    </button>
+    <dialog class="nes-dialog is-rounded" style="max-width: 600px;" id="forests">
+      <form method="dialog">
+        <p class="title">CO2 ppm:</p>
+        <p>This is the average global level of CO2 in the atmosphere, measured
+        in parts per million (ppm).</p>
+        <menu class="dialog-menu">
+          <button class="nes-btn is-error">Cancel</button>
+        </menu>
+      </form>
+    </dialog>
+    <progress class="nes-progress is-success" value="50" max="100" style="max-width: 400px;"></progress>
+<!--
+    <p>Biodiversity</p>
+    <progress class="nes-progress is-warning" value="30" max="100" style="max-width: 400px;"></progress><br><br> -->
+
+        </div>
+      </div>
+    </div>
+
+    <div class="nes-container" style="background-color: white; margin: 10px">
+        <p>Copyright 2021 Michael Hayman.</p>
     </div>
 
 {% endblock %}

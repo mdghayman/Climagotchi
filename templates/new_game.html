@@ -8,12 +8,49 @@
 
     <h1>New Game</h1><br>
 
-    <p>
-        Level 1: Represent a united world government under the UNFCCC, spending
-        collective resources to reduce global CO2 levels, thereby avoiding
-        temperature increase and sea level rise.
-    </p>
+    <div class="row">
+      <div class="column">
+        <div class="nes-container is-dark" style="min-height: 600;">
 
-    <a href="level_1"><button type="button" class="nes-btn is-success">Level 1</button></a><br>
+    <h3>Please select difficulty:</h3>
+    <p></p>
+    <label>
+      <input type="radio" class="nes-radio" name="answer" value="Empty" checked />
+      <span>Empty</span>
+    <label>
+    <p></p>
+    <label>
+      <input type="radio" class="nes-radio" name="answer" value="Easy (USA)" />
+      <span>Easy (USA)</span>
+    <label>
+    <p></p>
+    <label>
+      <input type="radio" class="nes-radio" name="answer" value="Medium (Brazil)" />
+      <span>Medium (Brazil)</span>
+    <label>
+    <p></p>
+    <label>
+      <input type="radio" class="nes-radio" name="answer" value="Hard (Namibia)" />
+      <span>Hard (Namibia)</span>
+    <label>
+
+        </div>
+      </div>
+      <div class="column">
+        <div class="nes-container is-dark" style="min-height: 600;">
+
+    <a href="level_1"><button type="button" class="nes-btn is-success">Level 1: 1800-1900</button></a><br>
+    <p></p>
+    <a href="level_2"><button type="button" class="nes-btn is-disabled">Level 2: 1901-1951</button></a><br>
+    <p></p>
+    <a href="level_3"><button type="button" class="nes-btn is-disabled">Level 3: 1951-1970</button></a><br>
+    <p></p>
+    <a href="level_4"><button type="button" class="nes-btn is-disabled">Level 4: 1971-1997</button></a><br>
+    <p></p>
+    <a href="level_5"><button type="button" class="nes-btn is-disabled">Level 5: 1998-2012</button></a><br>
+
+        </div>
+      </div>
+    </div>
 
 {% endblock %}
