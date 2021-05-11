@@ -1,8 +1,11 @@
 body {
     margin: 20px;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     background-color: black;
+}
+.column {
+  padding: 10px;
 }
 
 @media screen and (min-width : 1200px)
