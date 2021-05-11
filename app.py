@@ -16,6 +16,28 @@ temp = atmosphere.temp
 sea_level = atmosphere.sea_level
 
 
+def load_game_page(country, page):
+
+    gdp_per_capita = country.gdp_per_capita
+    top_ten_percent_income = country.top_ten_percent_income
+    co2_per_capita = country.co2_per_capita
+    research_percent_of_gdp = country.research_percent_of_gdp
+    life_expectancy = country.life_expectancy
+    forest_cover = country.forest_cover
+
+    return render_template(page,
+        country=session['country'],
+        year=atmosphere.year,
+        gdp_per_capita=gdp_per_capita,
+        equality=top_ten_percent_income-1,
+        research_percent_of_gdp=research_percent_of_gdp,
+        life_expectancy=life_expectancy,
+        co2='{:.1f}'.format(co2_per_capita),
+        temp='{:.1f}'.format(atmosphere.temp),
+        sea_level='{:.1f}'.format(atmosphere.sea_level),
+        forest_cover='{:1f}'.format(forest_cover))
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
@@ -49,25 +71,7 @@ def level_1():
     if country.co2_per_capita > 15:
         return redirect(url_for('game_over'))
 
-    gdp_per_capita = country.gdp_per_capita
-    top_ten_percent_income = country.top_ten_percent_income
-    co2_per_capita = country.co2_per_capita
-    research_percent_of_gdp = country.research_percent_of_gdp
-    life_expectancy = country.life_expectancy
-    forest_cover = country.forest_cover
-
-    return render_template('level_1.html',
-        country=session['country'],
-        year=atmosphere.year,
-        gdp_per_capita=gdp_per_capita,
-        equality=top_ten_percent_income-1,
-        research_percent_of_gdp=research_percent_of_gdp,
-        life_expectancy=life_expectancy,
-        co2='{:.1f}'.format(co2_per_capita),
-        temp='{:.1f}'.format(atmosphere.temp),
-        sea_level='{:.1f}'.format(atmosphere.sea_level),
-        forest_cover='{:1f}'.format(forest_cover)
-    )
+    return load_game_page(country=country, page='level_1.html')
 
 
 @app.route('/investment', methods=['GET', 'POST'])
@@ -82,53 +86,19 @@ def investment():
         if request.form['investment'] == 'manufacturing':
             country.gdp_per_capita *= 1.1
             country.co2_per_capita *= 1.1
+            atmosphere.year += 1
         if request.form['investment'] == 'agriculture':
             country.gdp_per_capita *= 1.1
             country.forest_cover *= 0.9
+            atmosphere.year += 1
         if request.form['investment'] == 'healthcare':
             country.gdp_per_capita *= 0.9
             country.life_expectancy *= 1.1
-        if request.form['investment'] == 'research':
-            country.gdp_per_capita *= 0.9
-            country.research_percent_of_gdp *= 1.1
-        gdp_per_capita = country.gdp_per_capita
-        top_ten_percent_income = country.top_ten_percent_income
-        co2_per_capita = country.co2_per_capita
-        research_percent_of_gdp = country.research_percent_of_gdp
-        life_expectancy = country.life_expectancy
-        forest_cover = country.forest_cover
+            atmosphere.year += 1
         return redirect(url_for('level_1'))
-        #     country=session['country'],
-        #     year=atmosphere.year,
-        #     gdp_per_capita=gdp_per_capita,
-        #     equality=top_ten_percent_income-1,
-        #     research_percent_of_gdp=research_percent_of_gdp,
-        #     life_expectancy=life_expectancy,
-        #     co2='{:.1f}'.format(co2_per_capita),
-        #     temp='{:.1f}'.format(atmosphere.temp),
-        #     sea_level='{:.1f}'.format(atmosphere.sea_level),
-        #     forest_cover='{:1f}'.format(forest_cover)
-        # )
 
     elif request.method == 'GET':
-        gdp_per_capita = country.gdp_per_capita
-        top_ten_percent_income = country.top_ten_percent_income
-        co2_per_capita = country.co2_per_capita
-        research_percent_of_gdp = country.research_percent_of_gdp
-        life_expectancy = country.life_expectancy
-        forest_cover = country.forest_cover
-        return render_template('investment.html',
-        country=session['country'],
-        year=atmosphere.year,
-        gdp_per_capita=gdp_per_capita,
-        equality=top_ten_percent_income-1,
-        research_percent_of_gdp=research_percent_of_gdp,
-        life_expectancy=life_expectancy,
-        co2='{:.1f}'.format(co2_per_capita),
-        temp='{:.1f}'.format(atmosphere.temp),
-        sea_level='{:.1f}'.format(atmosphere.sea_level),
-        forest_cover='{:1f}'.format(forest_cover)
-    )
+        return load_game_page(country=country, page='investment.html')
 
 
 @app.route('/mitigation', methods=['GET', 'POST'])
@@ -139,34 +109,23 @@ def mitigation():
         if country_instance.name == session['country']:
             country = country_instance
 
-    gdp_per_capita = country.gdp_per_capita
-    top_ten_percent_income = country.top_ten_percent_income
-    co2_per_capita = country.co2_per_capita
-    research_percent_of_gdp = country.research_percent_of_gdp
-    life_expectancy = country.life_expectancy
-    forest_cover = country.forest_cover
-
     if request.method == 'POST':
         if request.form['mitigation'] == 'renewable_energy':
-            pass
+            country.gdp_per_capita *= 0.9
+            country.co2_per_capita *= 0.9
+            atmosphere.year += 1
         if request.form['mitigation'] == 'reforestation':
-            pass
+            country.forest_cover *= 1.1
+            country.co2_per_capita *= 0.9
+            atmosphere.year += 1
         if request.form['mitigation'] == 'research':
-            pass
+            country.gdp_per_capita *= 0.9
+            country.research_percent_of_gdp *= 1.1
+            atmosphere.year += 1
+        return redirect(url_for('level_1'))
 
     elif request.method == 'GET':
-        return render_template('mitigation.html',
-        country=session['country'],
-        year=atmosphere.year,
-        gdp_per_capita=gdp_per_capita,
-        equality=top_ten_percent_income-1,
-        research_percent_of_gdp=research_percent_of_gdp,
-        life_expectancy=life_expectancy,
-        co2='{:.1f}'.format(co2_per_capita),
-        temp='{:.1f}'.format(atmosphere.temp),
-        sea_level='{:.1f}'.format(atmosphere.sea_level),
-        forest_cover='{:1f}'.format(forest_cover)
-    )
+        return load_game_page(country=country, page='mitigation.html')
 
 
 @app.route('/adaptation', methods=['GET', 'POST'])
@@ -177,34 +136,23 @@ def adaptation():
         if country_instance.name == session['country']:
             country = country_instance
 
-    gdp_per_capita = country.gdp_per_capita
-    top_ten_percent_income = country.top_ten_percent_income
-    co2_per_capita = country.co2_per_capita
-    research_percent_of_gdp = country.research_percent_of_gdp
-    life_expectancy = country.life_expectancy
-    forest_cover = country.forest_cover
-
     if request.method == 'POST':
         if request.form['adaptation'] == 'resilient_infrastructure':
-            pass
+            country.gdp_per_capita *= 0.9
+            country.top_ten_percent_income *= 0.9
+            atmosphere.year += 1
         if request.form['adaptation'] == 'climate_smart_agriculture':
-            pass
+            country.gdp_per_capita *= 1.1
+            country.forest_cover *= 1.1
+            atmosphere.year += 1
         if request.form['adaptation'] == 'research':
-            pass
+            country.gdp_per_capita *= 0.9
+            country.research_percent_of_gdp *= 1.1
+            atmosphere.year += 1
+        return redirect(url_for('level_1'))
 
     elif request.method == 'GET':
-        return render_template('adaptation.html',
-        country=session['country'],
-        year=atmosphere.year,
-        gdp_per_capita=gdp_per_capita,
-        equality=top_ten_percent_income-1,
-        research_percent_of_gdp=research_percent_of_gdp,
-        life_expectancy=life_expectancy,
-        co2='{:.1f}'.format(co2_per_capita),
-        temp='{:.1f}'.format(atmosphere.temp),
-        sea_level='{:.1f}'.format(atmosphere.sea_level),
-        forest_cover='{:1f}'.format(forest_cover)
-    )
+        return load_game_page(country=country, page='adaptation.html')
 
 
 @app.route('/policy', methods=['GET', 'POST'])
@@ -215,34 +163,17 @@ def policy():
         if country_instance.name == session['country']:
             country = country_instance
 
-    gdp_per_capita = country.gdp_per_capita
-    top_ten_percent_income = country.top_ten_percent_income
-    co2_per_capita = country.co2_per_capita
-    research_percent_of_gdp = country.research_percent_of_gdp
-    life_expectancy = country.life_expectancy
-    forest_cover = country.forest_cover
-
     if request.method == 'POST':
         if request.form['policy'] == 'climate_white_paper':
-            pass
+            atmosphere.year += 1
         if request.form['policy'] == 'new_climate_bill':
-            pass
+            atmosphere.year += 1
         if request.form['policy'] == 'climate_policy_unit':
-            pass
+            atmosphere.year += 1
+        return redirect(url_for('level_1'))
 
     elif request.method == 'GET':
-        return render_template('policy.html',
-        country=session['country'],
-        year=atmosphere.year,
-        gdp_per_capita=gdp_per_capita,
-        equality=top_ten_percent_income-1,
-        research_percent_of_gdp=research_percent_of_gdp,
-        life_expectancy=life_expectancy,
-        co2='{:.1f}'.format(co2_per_capita),
-        temp='{:.1f}'.format(atmosphere.temp),
-        sea_level='{:.1f}'.format(atmosphere.sea_level),
-        forest_cover='{:1f}'.format(forest_cover)
-    )
+        return load_game_page(country=country, page='policy.html')
 
 
 @app.route('/diplomacy', methods=['GET', 'POST'])
@@ -253,34 +184,17 @@ def diplomacy():
         if country_instance.name == session['country']:
             country = country_instance
 
-    gdp_per_capita = country.gdp_per_capita
-    top_ten_percent_income = country.top_ten_percent_income
-    co2_per_capita = country.co2_per_capita
-    research_percent_of_gdp = country.research_percent_of_gdp
-    life_expectancy = country.life_expectancy
-    forest_cover = country.forest_cover
-
     if request.method == 'POST':
         if request.form['diplomacy'] == 'host_climate_conference':
-            pass
+            atmosphere.year += 1
         if request.method['diplomacy'] == 'contribute_to_climate_fund':
-            pass
+            atmosphere.year += 1
         if request.method['diplomacy'] == 'draft_climate_treaty':
-            pass
+            atmosphere.year += 1
+        return redirect(url_for('level_1'))
 
     elif request.method == 'GET':
-        return render_template('diplomacy.html',
-        country=session['country'],
-        year=atmosphere.year,
-        gdp_per_capita=gdp_per_capita,
-        equality=top_ten_percent_income-1,
-        research_percent_of_gdp=research_percent_of_gdp,
-        life_expectancy=life_expectancy,
-        co2='{:.1f}'.format(co2_per_capita),
-        temp='{:.1f}'.format(atmosphere.temp),
-        sea_level='{:.1f}'.format(atmosphere.sea_level),
-        forest_cover='{:1f}'.format(forest_cover)
-    )
+        return load_game_page(country=country, page='diplomacy.html')
 
 
 @app.route('/propaganda', methods=['GET', 'POST'])
@@ -291,34 +205,17 @@ def propaganda():
         if country_instance.name == session['country']:
             country = country_instance
 
-    gdp_per_capita = country.gdp_per_capita
-    top_ten_percent_income = country.top_ten_percent_income
-    co2_per_capita = country.co2_per_capita
-    research_percent_of_gdp = country.research_percent_of_gdp
-    life_expectancy = country.life_expectancy
-    forest_cover = country.forest_cover
-
     if request.method == 'POST':
         if request.form['propaganda'] == 'green_platform_to_campaign_for_government_control':
-            pass
+            atmosphere.year += 1
         if request.method['propaganda'] == 'trade_tariffs_on_foreign_goods_based_on_local_green_standards':
-            pass
+            atmosphere.year += 1
         if request.method['propaganda'] == 'insular_education_to_promote_local_climate_initiatives':
-            pass
+            atmosphere.year += 1
+        return redirect(url_for('level_1'))
 
     elif request.method == 'GET':
-        return render_template('propaganda.html',
-        country=session['country'],
-        year=atmosphere.year,
-        gdp_per_capita=gdp_per_capita,
-        equality=top_ten_percent_income-1,
-        research_percent_of_gdp=research_percent_of_gdp,
-        life_expectancy=life_expectancy,
-        co2='{:.1f}'.format(co2_per_capita),
-        temp='{:.1f}'.format(atmosphere.temp),
-        sea_level='{:.1f}'.format(atmosphere.sea_level),
-        forest_cover='{:1f}'.format(forest_cover)
-    )
+        return load_game_page(country=country, page='propaganda.html')
 
 
 @app.route('/game_over')
