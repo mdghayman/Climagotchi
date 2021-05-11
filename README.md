@@ -41,19 +41,28 @@ not to use JavaScript initially, but plan to integrate JavaScript in future
 versions where it may add necessary functionality.
 
 
-## What else can you do with Scarecrow?
-
-As a user, you don't need to be an expert in any of the languages or libraries
-used for Scarecrow, but you are free to customise your Scarecrow app if you know
-how to use them. The base apps don't integrate and JavaScript, so they're simple
-and predictable, but there's nothing stopping you from adding some JavaScript
-elements into your Scarecrow app.
-
-
 ## Goals and future milestones
+
+I've committed to grow Climagotchi at a rate of 1,000 lines of code per week,
+for the first 15 weeks. This is a net amount, so when I get into some serious
+cleaning and refactoring of code, I'll need to replace any lines removed with
+new lines. The total lines of code includes all files in this repository - the
+app backend in Python with Flask, the app frontend in HTML and CSS, all of the
+game logic, and written resources like this README file. I'll keep a running
+total now, to show how the total size grows over the first 15 weeks:
+
+| Week   | Date          | Lines of code |
+|--------|---------------|---------------|
+| Week 0 | 27 April 2021 | 0 lines       |
+| Week 1 | 4 May 2021    | 1,280 lines   |
+| Week 2 | 11 May 2021   | 2,173 lines   |
 
 
 ## Further documentation
+
+I'm writing game instructions into the app, complementing functionality as I
+build it. This README file also serves as a reference including basic
+instructions for using the app and playing the game.
 
 
 ## How can you contribute?
@@ -66,4 +75,4 @@ proposal and your background.
 
 ## License
 
-Copyright (c) 2021 Michael Hayman, under the MIT License
+Copyright 2021 Michael Hayman, under the MIT License.

@@ -1,0 +1,258 @@
+<html>
+<head>
+    <title>{% block title %} {% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='v35.css')}}">
+</head>
+<body>
+
+    <div class="nes-container" style="background-color: white; margin: 10px">
+        <h1>{{ country }} ~ Year: {{ year }}</h1>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+      <p></p>
+
+      <div class="column">
+        <div class="nes-container" style="min-height: 550; background: white;">
+
+      <p>GDP pp: {{ '{:.0f}'.format(gdp_per_capita) }}</p>
+
+      {% if gdp_per_capita < 400 %}
+      <i class="nes-icon coin is-medium"></i>
+      {% endif %}
+      {% if 400 < gdp_per_capita < 1200 %}
+      <i class="nes-icon coin is-medium"></i>
+      <i class="nes-icon close is-medium"></i><br><br>
+      {% endif %}
+      {% if 1200 < gdp_per_capita < 3600 %}
+      <i class="nes-icon coin is-medium"></i>
+      <i class="nes-icon coin is-medium"></i>
+      {% endif %}
+      {% if 3600 < gdp_per_capita < 10800 %}
+      <i class="nes-icon coin is-medium"></i>
+      <i class="nes-icon coin is-medium"></i>
+      <i class="nes-icon close is-medium"></i><br><br>
+      {% endif %}
+      {% if 10800 < gdp_per_capita < 15000 %}
+      <i class="nes-icon coin is-medium"></i>
+      <i class="nes-icon coin is-medium"></i>
+      <i class="nes-icon coin is-medium"></i>
+      {% endif %}
+      {% if 15000 < gdp_per_capita < 25000 %}
+      <i class="nes-icon coin is-medium"></i>
+      <i class="nes-icon coin is-medium"></i>
+      <i class="nes-icon coin is-medium"></i>
+      <i class="nes-icon close is-medium"></i><br><br>
+      {% endif %}
+      {% if 25000 < gdp_per_capita %}
+      <i class="nes-icon coin is-medium"></i>
+      <i class="nes-icon coin is-medium"></i>
+      <i class="nes-icon coin is-medium"></i>
+      <i class="nes-icon coin is-medium"></i>
+      {% endif %}
+
+    <p></p>
+
+      <p>Equality: {{ '{:.1f}'.format(equality) + '%' }}</p>
+
+      {% if equality < 12.5 %}
+      <i class="nes-icon is-medium like is-empty"></i>
+      {% endif %}
+      {% if 12.5 <= equality < 25 %}
+      <i class="nes-icon is-medium like"></i>
+      {% endif %}
+      {% if 25 <= equality < 37.5 %}
+      <i class="nes-icon is-medium like"></i>
+      <i class="nes-icon is-medium like is-empty"></i>
+      {% endif %}
+      {% if 37.5 <= equality < 50 %}
+      <i class="nes-icon is-medium like"></i>
+      <i class="nes-icon is-medium like"></i>
+      {% endif %}
+      {% if 50 <= equality < 62.5 %}
+      <i class="nes-icon is-medium like"></i>
+      <i class="nes-icon is-medium like"></i>
+      <i class="nes-icon is-medium like is-empty"></i>
+      {% endif %}
+      {% if 62.5 <= equality < 75 %}
+      <i class="nes-icon is-medium like"></i>
+      <i class="nes-icon is-medium like"></i>
+      <i class="nes-icon is-medium like"></i>
+      {% endif %}
+      {% if 75 <= equality < 87.5 %}
+      <i class="nes-icon is-medium like"></i>
+      <i class="nes-icon is-medium like"></i>
+      <i class="nes-icon is-medium like"></i>
+      <i class="nes-icon is-medium like is-empty"></i>
+      {% endif %}
+      {% if 87.5 <= equality <= 100 %}
+      <i class="nes-icon is-medium like"></i>
+      <i class="nes-icon is-medium like"></i>
+      <i class="nes-icon is-medium like"></i>
+      <i class="nes-icon is-medium like"></i>
+      {% endif %}
+
+    <p></p>
+
+      <p>Research: {{ '{:.1f}'.format(research_percent_of_gdp) + '%' }}</p>
+
+      {% if research_percent_of_gdp < 0.2 %}
+      <i class="nes-icon is-medium star is-transparent"></i><br><br>
+      {% endif %}
+      {% if 0.2 <= research_percent_of_gdp < 0.4 %}
+      <i class="nes-icon is-medium star is-half"></i>
+      {% endif %}
+      {% if 0.4 <= research_percent_of_gdp < 0.6 %}
+      <i class="nes-icon is-medium star"></i>
+      {% endif %}
+      {% if 0.6 <= research_percent_of_gdp < 0.8 %}
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star is-transparent"></i><br><br>
+      {% endif %}
+      {% if 0.8 <= research_percent_of_gdp < 1.0 %}
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star is-half"></i>
+      {% endif %}
+      {% if 1.0 <= research_percent_of_gdp < 1.2 %}
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star"></i>
+      {% endif %}
+      {% if 1.2 <= research_percent_of_gdp < 1.4 %}
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star is-transparent"></i><br><br>
+      {% endif %}
+      {% if 1.4 <= research_percent_of_gdp <= 1.6 %}
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star is-half"></i>
+      {% endif %}
+      {% if 1.6 <= research_percent_of_gdp <= 1.8 %}
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star"></i>
+      {% endif %}
+      {% if 1.8 <= research_percent_of_gdp <= 2.0 %}
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star is-transparent"></i><br><br>
+      {% endif %}
+      {% if 2.0 <= research_percent_of_gdp <= 2.2 %}
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star is-half"></i>
+      {% endif %}
+      {% if 2.2 <= research_percent_of_gdp <= 2.4 %}
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star"></i>
+      <i class="nes-icon is-medium star"></i>
+      {% endif %}
+
+    <p></p>
+
+      <p>Health: {{ '{:.1f}'.format(life_expectancy) }}</p>
+
+      {% if life_expectancy < 8 %}
+      <i class="nes-icon is-medium is-transparent heart"></i><br><br>
+      {% endif %}
+      {% if 8 <= life_expectancy < 16 %}
+      <i class="nes-icon is-medium is-half heart"></i>
+      {% endif %}
+      {% if 16 <= life_expectancy < 24 %}
+      <i class="nes-icon is-medium heart"></i>
+      {% endif %}
+      {% if 24 <= life_expectancy < 32 %}
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium is-transparent heart"></i><br><br>
+      {% endif %}
+      {% if 32 <= life_expectancy < 40 %}
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium is-half heart"></i>
+      {% endif %}
+      {% if 40 <= life_expectancy < 48 %}
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium heart"></i>
+      {% endif %}
+      {% if 48 <= life_expectancy < 56 %}
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium is-transparent heart"></i><br><br>
+      {% endif %}
+      {% if 56 <= life_expectancy <= 64 %}
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium is-half heart"></i>
+      {% endif %}
+      {% if 64 <= life_expectancy <= 72 %}
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium heart"></i>
+      {% endif %}
+      {% if 72 <= life_expectancy <= 80 %}
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium is-transparent heart"></i><br><br>
+      {% endif %}
+      {% if 80 <= life_expectancy <= 88 %}
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium is-half heart"></i>
+      {% endif %}
+      {% if 88 <= life_expectancy <= 96 %}
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium heart"></i>
+      <i class="nes-icon is-medium heart"></i>
+      {% endif %}
+
+        </div>
+      </div>
+
+      <p></p>
+
+      <div class="column">
+        <div class="nes-container" style="min-height: 550; background: white;">
+
+    <p> CO2: {{ co2 }} ppm </p>
+    <progress class="nes-progress" value={{ co2 }} max="30" style="max-width: 400px;"></progress><br>
+
+    <p></p>
+
+    <p>Temp: {{ temp }} C</p>
+    <progress class="nes-progress is-error" value={{ temp }} max="50" style="max-width: 400px;"></progress><br>
+
+    <p></p>
+
+    <p>Sea Level: {{ sea_level }}</p>
+    <progress class="nes-progress is-primary" value={{ sea_level }} max="200" style="max-width: 400px;"></progress><br>
+
+    <p></p>
+
+    <p>Forests: {{ forest_cover }}</p>
+    <progress class="nes-progress is-success" value={{ forest_cover }} max="100" style="max-width: 400px;"></progress>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="nes-container" style="background-color: white; margin: 10px">
+        <a href="how_to_play"><button type="button" class="nes-btn is-success">How To Play</button></a>
+        <a href="about_climagotchi"><button type="button" class="nes-btn is-success">About Climagotchi</button></a>
+        <a href="about_climate_change"><button type="button" class="nes-btn is-success">About Climate Change</button></a>
+    </div>
+
+    <div class="nes-container" style="background-color: white; margin: 10px">
+        <p>Copyright 2021 Michael Hayman.</p><i class="nes-logo"></i>
+    </div>
+
+</body>
+</html>

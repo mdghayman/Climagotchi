@@ -1,0 +1,28 @@
+{% extends 'base_game.html' %}
+
+{% block title %}
+    Propaganda
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="column">
+        <div class="nes-container" style="min-height: 550; background: white;">
+
+        <p>Propaganda:</p>
+
+        <form method="post" action="/propaganda">
+          <button class="nes-btn" name="propaganda" value="green_platform_to_campaign_for_government_control">Green Platform To Campaign For Government Control</button><br>
+          <p></p>
+          <button class="nes-btn" name="propaganda" value="trade_tariffs_on_foreign_goods_based_on_local_green_standards">Trade Tariffs On Foreign Goods Based On Local Green Standards</button><br>
+          <p></p>
+          <button class="nes-btn" name="propaganda" value="insular_education_to_promote_local_climate_initiatives">Insular Education To Promote Local Climate Initiatives</button><br>
+          <p></p>
+        </form><br>
+        <a href="level_1"><button class="nes-btn is-error">Cancel</button></a>
+
+        </div>
+      </div>
+
+{% endblock %}

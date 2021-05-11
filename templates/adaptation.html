@@ -1,0 +1,28 @@
+{% extends 'base_game.html' %}
+
+{% block title %}
+    Adaptation
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="column">
+        <div class="nes-container" style="min-height: 550; background: white;">
+
+        <p>Adaptation:</p>
+
+        <form method="post" action="/adaptation">
+          <button class="nes-btn" name="adaptation" value="resilient_infrastructure">Resilient Infrastructure</button><br>
+          <p></p>
+          <button class="nes-btn" name="adaptation" value="climate_smart_agriculture">Climate Smart Agriculture</button><br>
+          <p></p>
+          <button class="nes-btn" name="adaptation" value="adaptation_research">Adaptation Research</button><br>
+          <p></p>
+        </form><br>
+        <a href="level_1"><button class="nes-btn is-error">Cancel</button></a>
+
+        </div>
+      </div>
+
+{% endblock %}

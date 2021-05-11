@@ -1,0 +1,27 @@
+{% extends 'base_game.html' %}
+
+{% block title %}
+    Mitigation
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="column">
+        <div class="nes-container" style="min-height: 550; background: white;">
+
+        <p>Mitigation:</p>
+
+        <form method="post" action="/mitigation">
+          <button class="nes-btn" name="mitigation" value="renewable_energy">Renewable Energy</button><br>
+          <p></p>
+          <button class="nes-btn" name="mitigation" value="reforestation">Reforestation</button><br>
+          <p></p>
+          <button class="nes-btn" name="mitigation" value="mitigation_research">Mitigation Research</button><br>
+        </form><br>
+        <a href="level_1"><button class="nes-btn is-error">Cancel</button></a>
+
+        </div>
+      </div>
+
+{% endblock %}
