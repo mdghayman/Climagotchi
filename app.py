@@ -25,7 +25,7 @@ def index():
 def new_game():
 
     # country_choices = ['USA', 'Australia', 'India', 'Brazil', 'Namibia']
-    country_choices = ['Low Income', 'Middle Income', 'High Income']
+    country_choices = ['Low Income Country', 'Middle Income Country', 'High Income Country']
 
     if request.method == 'POST':
         if request.form['country'] in country_choices:
@@ -45,6 +45,9 @@ def level_1():
     for country_instance in country_instances:
         if country_instance.name == session['country']:
             country = country_instance
+
+    if country.co2_per_capita > 15:
+        return redirect(url_for('game_over'))
 
     gdp_per_capita = country.gdp_per_capita
     top_ten_percent_income = country.top_ten_percent_income
@@ -75,29 +78,50 @@ def investment():
         if country_instance.name == session['country']:
             country = country_instance
 
-    gdp_per_capita = country.gdp_per_capita
-    top_ten_percent_income = country.top_ten_percent_income
-    co2_per_capita = country.co2_per_capita
-    research_percent_of_gdp = country.research_percent_of_gdp
-    life_expectancy = country.life_expectancy
-    forest_cover = country.forest_cover
-
     if request.method == 'POST':
         if request.form['investment'] == 'manufacturing':
-            pass
+            country.gdp_per_capita *= 1.1
+            country.co2_per_capita *= 1.1
         if request.form['investment'] == 'agriculture':
-            pass
+            country.gdp_per_capita *= 1.1
+            country.forest_cover *= 0.9
         if request.form['investment'] == 'healthcare':
-            pass
+            country.gdp_per_capita *= 0.9
+            country.life_expectancy *= 1.1
         if request.form['investment'] == 'research':
-            pass
+            country.gdp_per_capita *= 0.9
+            country.research_percent_of_gdp *= 1.1
+        gdp_per_capita = country.gdp_per_capita
+        top_ten_percent_income = country.top_ten_percent_income
+        co2_per_capita = country.co2_per_capita
+        research_percent_of_gdp = country.research_percent_of_gdp
+        life_expectancy = country.life_expectancy
+        forest_cover = country.forest_cover
+        return redirect(url_for('level_1'))
+        #     country=session['country'],
+        #     year=atmosphere.year,
+        #     gdp_per_capita=gdp_per_capita,
+        #     equality=top_ten_percent_income-1,
+        #     research_percent_of_gdp=research_percent_of_gdp,
+        #     life_expectancy=life_expectancy,
+        #     co2='{:.1f}'.format(co2_per_capita),
+        #     temp='{:.1f}'.format(atmosphere.temp),
+        #     sea_level='{:.1f}'.format(atmosphere.sea_level),
+        #     forest_cover='{:1f}'.format(forest_cover)
+        # )
 
     elif request.method == 'GET':
+        gdp_per_capita = country.gdp_per_capita
+        top_ten_percent_income = country.top_ten_percent_income
+        co2_per_capita = country.co2_per_capita
+        research_percent_of_gdp = country.research_percent_of_gdp
+        life_expectancy = country.life_expectancy
+        forest_cover = country.forest_cover
         return render_template('investment.html',
         country=session['country'],
         year=atmosphere.year,
         gdp_per_capita=gdp_per_capita,
-        top_ten_percent_income=top_ten_percent_income,
+        equality=top_ten_percent_income-1,
         research_percent_of_gdp=research_percent_of_gdp,
         life_expectancy=life_expectancy,
         co2='{:.1f}'.format(co2_per_capita),
@@ -131,11 +155,11 @@ def mitigation():
             pass
 
     elif request.method == 'GET':
-        return render_template('investment.html',
+        return render_template('mitigation.html',
         country=session['country'],
         year=atmosphere.year,
         gdp_per_capita=gdp_per_capita,
-        top_ten_percent_income=top_ten_percent_income,
+        equality=top_ten_percent_income-1,
         research_percent_of_gdp=research_percent_of_gdp,
         life_expectancy=life_expectancy,
         co2='{:.1f}'.format(co2_per_capita),
@@ -169,11 +193,11 @@ def adaptation():
             pass
 
     elif request.method == 'GET':
-        return render_template('investment.html',
+        return render_template('adaptation.html',
         country=session['country'],
         year=atmosphere.year,
         gdp_per_capita=gdp_per_capita,
-        top_ten_percent_income=top_ten_percent_income,
+        equality=top_ten_percent_income-1,
         research_percent_of_gdp=research_percent_of_gdp,
         life_expectancy=life_expectancy,
         co2='{:.1f}'.format(co2_per_capita),
@@ -207,11 +231,11 @@ def policy():
             pass
 
     elif request.method == 'GET':
-        return render_template('investment.html',
+        return render_template('policy.html',
         country=session['country'],
         year=atmosphere.year,
         gdp_per_capita=gdp_per_capita,
-        top_ten_percent_income=top_ten_percent_income,
+        equality=top_ten_percent_income-1,
         research_percent_of_gdp=research_percent_of_gdp,
         life_expectancy=life_expectancy,
         co2='{:.1f}'.format(co2_per_capita),
@@ -245,11 +269,11 @@ def diplomacy():
             pass
 
     elif request.method == 'GET':
-        return render_template('investment.html',
+        return render_template('diplomacy.html',
         country=session['country'],
         year=atmosphere.year,
         gdp_per_capita=gdp_per_capita,
-        top_ten_percent_income=top_ten_percent_income,
+        equality=top_ten_percent_income-1,
         research_percent_of_gdp=research_percent_of_gdp,
         life_expectancy=life_expectancy,
         co2='{:.1f}'.format(co2_per_capita),
@@ -283,11 +307,11 @@ def propaganda():
             pass
 
     elif request.method == 'GET':
-        return render_template('investment.html',
+        return render_template('propaganda.html',
         country=session['country'],
         year=atmosphere.year,
         gdp_per_capita=gdp_per_capita,
-        top_ten_percent_income=top_ten_percent_income,
+        equality=top_ten_percent_income-1,
         research_percent_of_gdp=research_percent_of_gdp,
         life_expectancy=life_expectancy,
         co2='{:.1f}'.format(co2_per_capita),
@@ -295,6 +319,16 @@ def propaganda():
         sea_level='{:.1f}'.format(atmosphere.sea_level),
         forest_cover='{:1f}'.format(forest_cover)
     )
+
+
+@app.route('/game_over')
+def game_over():
+    return render_template('game_over.html')
+
+
+@app.route('/exit_game')
+def exit_game():
+    return render_template('exit_game.html')
 
 
 @app.route('/how_to_play')

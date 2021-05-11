@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Game Over
+{% endblock %}
+
+{% block content %}
+
+    <div class="nes-container" style="background-color: white; margin: 10px">
+
+    <h1>Game Over!</h1><br>
+
+    <p>
+        Better luck next time.
+    </p>
+
+    </div>
+
+    <div class="nes-container" style="background-color: white; margin: 10px">
+        <a href="/"><button class="nes-btn is-error">Back To Home Page</button></a>
+        <p></p>
+        <a href="about_climagotchi"><button type="button" class="nes-btn is-success">About Climagotchi</button></a>
+        <a href="about_climate_change"><button type="button" class="nes-btn is-success">About Climate Change</button></a>
+    </div>
+
+{% endblock %}

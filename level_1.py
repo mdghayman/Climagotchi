@@ -29,7 +29,7 @@ class Country:
         self.life_expectancy = life_expectancy
         self.forest_cover = forest_cover
 
-high_income = Country(name='High Income',
+high_income = Country(name='High Income Country',
     gdp_per_capita=25103.2939763839,
     top_ten_percent_income=30.3,
     co2_per_capita=12.0408134356504,
@@ -37,7 +37,7 @@ high_income = Country(name='High Income',
     life_expectancy=77.4493442982228,
     forest_cover=28.8209633722527)
 
-middle_income = Country(name='Middle Income',
+middle_income = Country(name='Middle Income Country',
     gdp_per_capita=1264.82625991548,
     top_ten_percent_income=27.6,
     co2_per_capita=2.27059183623629,
@@ -45,7 +45,7 @@ middle_income = Country(name='Middle Income',
     life_expectancy=66.4028734575064,
     forest_cover=35.0986223770974)
 
-low_income = Country(name='Low Income',
+low_income = Country(name='Low Income Country',
     gdp_per_capita=333.726703204851,
     top_ten_percent_income=46.1,
     co2_per_capita=0.422933079579211,
